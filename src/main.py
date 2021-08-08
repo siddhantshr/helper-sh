@@ -6,6 +6,7 @@ from bot import Bot
 
 bot = Bot()  # dont pass in things here, pass in ./bot.py
 
+
 @bot.command(name="load")
 async def load(ctx, cog):
     if ctx.author.id not in bot.owner_ids:
@@ -30,7 +31,7 @@ async def reload(ctx, cog):
     await bot.handle_reload(ctx, cog)
 
 
-@bot.command(name="eval", aliases=['exec'])
+@bot.command(name="eval", aliases=["exec"])
 async def eval_command(ctx, *, code='await ctx.send("Hello World")'):
     if not ctx.author.id in bot.owner_ids:
         return await ctx.send("Sorry, this is a Developer only command!")

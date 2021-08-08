@@ -2,6 +2,7 @@ import datetime
 import os
 import random
 import traceback
+
 import discord
 import inputimeout
 from discord.ext import commands, tasks
@@ -25,11 +26,7 @@ class Bot(commands.Bot):
         )
 
         self.help_command = None
-        self.secrets = {
-            x: y
-            for x, y in os.environ.items()
-            if x in ["TOKEN"]
-        }
+        self.secrets = {x: y for x, y in os.environ.items() if x in ["TOKEN"]}
         self.applying = []
         self.bot_cogs = [
             f"cogs.{cog[:-3]}"
@@ -94,7 +91,7 @@ After 5 seconds hyena will default to normal boot
 
     def get_cog_aliases(self, term: str):
         aliases = {
-            ("utilities", "utils", "util") : "utilities",
+            ("utilities", "utils", "util"): "utilities",
         }
 
         for alias, cog in aliases.items():
@@ -260,7 +257,7 @@ Errored out : {newline.join([f"{x[0]} : {x[1]}" for x in errored_out])}
             discord.Activity(
                 type=discord.ActivityType.listening,
                 name="the mods While eating donuts | sudo help",
-            )
+            ),
         ]
         await self.change_presence(
             activity=random.choice(status), status=discord.Status.dnd
